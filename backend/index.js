@@ -1,8 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import booksRoute from "./routes/booksRoute.js";
 dotenv.config();
 
+const app = express();
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_DB);
@@ -17,7 +19,9 @@ mongoose.connection.on("Disconnected", () => {
   console.log("mongoDB disconnected");
 });
 
-const app = express();
+// middlewares
+app.use("/books", booksRoute);
+
 app.listen(8800, () => {
   connect();
   console.log("connected to backend");
