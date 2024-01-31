@@ -20,7 +20,7 @@ mongoose.connection.on("Disconnected", () => {
 });
 
 // middlewares
-app.use("/books", booksRoute);
+app.use("/api/books", booksRoute);
 
 app.listen(8800, () => {
   connect();
