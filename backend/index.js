@@ -19,9 +19,14 @@ mongoose.connection.on("Disconnected", () => {
   console.log("mongoDB disconnected");
 });
 
-// middlewares
+// ...........................middlewares................
+// necessary to run code
+app.use(express.json());
+
+// routes
 app.use("/api/books", booksRoute);
 
+// ...........................app listening....................
 app.listen(8800, () => {
   connect();
   console.log("connected to backend");
